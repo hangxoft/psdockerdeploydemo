@@ -7,14 +7,12 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:3.1 AS build
 WORKDIR /src
-COPY ["psdockerdeploydemo.csproj", "."]
-RUN dotnet restore "./psdockerdeploydemo.csproj"
 COPY . .
-WORKDIR "/src/."
-RUN dotnet build "psdockerdeploydemo.csproj" -c Release -o /app/build
+RUN dotnet restore
+RUN dotnet build -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "psdockerdeploydemo.csproj" -c Release -o /app/publish
+RUN dotnet publish -c Release -o /app/publish
 
 FROM base AS final
 WORKDIR /app
