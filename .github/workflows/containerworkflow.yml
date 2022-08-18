@@ -13,10 +13,6 @@ jobs:
         runs-on: ubuntu-latest
         
         steps:
-        - run: echo ${{ env.ACR_LOGON_SERVER }}
-        - run: echo ${{ env.IMAGE_NAME }}
-        - run: echo ${{ secrets.SERVICE_PRINCIPAL_ID }}
-        - run: echo ${{ secrets.SERVICE_PRINCIPAL_PASSWORD }}
           
         # checkout the repo
         - name: 'Checkout GitHub Action'
